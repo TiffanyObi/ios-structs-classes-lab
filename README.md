@@ -59,7 +59,7 @@ bilbo.height = 1.42
 bilbo.homePlanet = "Saturn"
 ```
 
-Answer: No. these three lines of code will not work because bilbo was made a constant using let. 
+Answer:  No, these line of code will not run because bilbo was declared a constant.
 
 
 Change the declaration of `bilbo` so that the above three lines of code **do** work:
@@ -84,7 +84,7 @@ jason.name = "Jason"
 
 What will the value of `edgar.name` be after those three lines of code are run? What will the value of `jason.name` be? Why?
 
-
+Answer: 'edgar.name' would print jason and 'jason.name' would also print jason. once jason  is made equal to edgar , they are bth pointing at the sae object. this means that jason's updates would update edgar's values as well. 
 
 ## Question 4
 
@@ -98,6 +98,7 @@ charlesFromJupiter.homePlanet = "Jupiter"
 
 What will the value of `charles.homePlanet` be after the above code run? What about the value of `charlesFromJupiter.homePlanet`? Why?
 
+the value of charles.homePlanet will be Pluto and the value of charlesFromJupiter.homePlanet will be Jupiter. This is because  charlesFromJupiter is a copy of charles. when structs copy structs they do notl affect the values of the original.
 
 ## Question 5
 
@@ -119,8 +120,24 @@ struct BankAccount {
 ```
 
 Does this code work? Why or why not?
+no it does not work because the function should return something, which would be balance + or - the amount. 
 
 Fix the `BankAccount` struct so it does work.
+
+`swift
+struct BankAccount {
+ var owner: String
+ var balance: Double
+
+ func deposit(_ amount: Double) -> Double {
+     return balance += amount
+ }
+
+ func withdraw(_ amount: Double) -> Double {
+    return balance -= amount
+ }
+ 
+}
 
 Given the code below (which should incorporate any fixes you made):
 
