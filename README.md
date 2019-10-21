@@ -8,6 +8,7 @@ Fork and clone this repo. On your fork, answer and commit the follow questions. 
 Given this class that represents a giant:
 
 ```swift
+
 class Giant {
  var name: String = "Fred"
  var weight: Double = 340.0
@@ -24,10 +25,19 @@ fred.name = "Brick"
 fred.weight = 999.2
 fred.homePlanet = "Mars"
 ```
+Answer: The variable name will mutate to "Brick" and the variable weight will mutate to 999.2: however, the constant homePlanet will not mutate to "Mars" because a constant can never mutate. 
+
+
 
 Fix the class definition for `Giant` in the space below so that it **does** work:
 
+Answer:
 
+class Giant {
+ var name: String = "Fred"
+ var weight: Double = 340.0
+ var homePlanet: String = "Earth"
+}
 ## Question 2
 
 Take a look at this struct that represents an alien:
@@ -49,7 +59,13 @@ bilbo.height = 1.42
 bilbo.homePlanet = "Saturn"
 ```
 
+Answer: No. these three lines of code will not work because bilbo was made a constant using let. 
+
+
 Change the declaration of `bilbo` so that the above three lines of code **do** work:
+
+
+var bilbo = Alien(name: "Bilbo", height: 1.67, homePlanet: "Venus")
 
 
 ## Question 3
@@ -58,12 +74,16 @@ Consider this bit of code that uses the `Giant` class:
 
 ```swift
 let edgar = Giant()
+
 edgar.name = "edgar"
+
 let jason = edgar
+
 jason.name = "Jason"
 ```
 
 What will the value of `edgar.name` be after those three lines of code are run? What will the value of `jason.name` be? Why?
+
 
 
 ## Question 4
