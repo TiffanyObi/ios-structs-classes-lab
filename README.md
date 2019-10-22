@@ -98,7 +98,7 @@ charlesFromJupiter.homePlanet = "Jupiter"
 
 What will the value of `charles.homePlanet` be after the above code run? What about the value of `charlesFromJupiter.homePlanet`? Why?
 
-the value of charles.homePlanet will be Pluto and the value of charlesFromJupiter.homePlanet will be Jupiter. This is because  charlesFromJupiter is a copy of charles. when structs copy structs they do notl affect the values of the original.
+Answer: The value of 'charles.homePlanet' will be "Pluto" and the value of 'charlesFromJupiter.homePlanet' will be "Jupiter". This is because  'charlesFromJupiter' is a copy of charles. When structs  make a copy, they do not affect the values of the original.
 
 ## Question 5
 
@@ -120,25 +120,26 @@ struct BankAccount {
 ```
 
 Does this code work? Why or why not?
-no it does not work because the function should return something, which would be balance + or - the amount. 
+
+Answer: No it does not work because the function should return something, which would be balance + or - 'amount'. 
 
 Fix the `BankAccount` struct so it does work.
 
-`swift
+```
 struct BankAccount {
  var owner: String
  var balance: Double
 
- func deposit(_ amount: Double) -> Double {
+ func deposit(amount: Double) -> Double {
      return balance += amount
  }
 
- func withdraw(_ amount: Double) -> Double {
+ func withdraw(amount: Double) -> Double {
     return balance -= amount
  }
  
 }
-
+```
 Given the code below (which should incorporate any fixes you made):
 
 ```swift
@@ -149,23 +150,82 @@ joeAccount.withdraw(50.0)
 
 What will the value of `joeAccount.balance` be after the above code runs? What about the value of `joeOtherAccount.balance`? Why?
 
+Answer: 'joeAccount' should equal 50.0 and 'joeOtherAccount' should equal 100.0
 
 ## Question 6
 
 a. Write a struct called `Person` that has 3 properties of type `String`: a first name, a last name and a middle name. Have the middle name be optional. Create 2 instances of a `Person`, one with a middle name and one without. Print one of their first names.
 
+Answer: 
+```
+struct Person {
+var firstName: String
+var middleName: String?
+var lastName: String
+
+}
+
+
+var tasha = Person(firstName: "Tasha", middleName: "Nancy", lastName: "Adams")
+
+var susan = Person(firstName: "Susan", lastName: "Doe")
+
+var jeremy = Person(firstName: "Jeremy", middleName: "Malcolm", lastName: "Cooper")
+
+print(tasha.firstName)
+print(susan.firstName)
+
+(i did both, i hope its okay)
+```
 
 b. Write a method in `Person` called `fullName` that will return a formatted string of an instance's full name. Call this method on both the instances you created in part a.
 
+Answer:
+```
 
+struct Person {
+var firstName: String
+var middleName: String?
+var lastName: String
+    
+    func fullName () -> String {
+        let fullNamee = firstName + " " + String(middleName ?? "") + " " + lastName
+
+        return fullNamee
+    }
+
+}
+
+
+var tasha = Person(firstName: "Tasha", middleName: "Nancy", lastName: "Adams")
+
+var susan = Person(firstName: "Susan", lastName: "Doe")
+
+var jeremy = Person(firstName: "Jeremy", middleName: "Malcolm", lastName: "Cooper")
+
+print(tasha.fullName())
+print(susan.fullName())
+
+
+```
 ## Question 7
 
 a. Create a struct called `Book` that has properties `title`, `author` and `rating`, of type `String`, `String`, and `Double` respectively. Create some instances of `Book`.
+```
+struct Book {
+    var title: String
+    var author: String
+    var rating: Double
+    
+}
+
+var theJungleBook = Book(title: "The Jungle Book", author: "Rudyard Kipling", rating: 9.0)
+print("\(theJungleBook.title)'s author is \(theJungleBook.author). This wonderful book recieved a rating of \(theJungleBook.rating)")
 
 
 b. Add a method to `Book` called `isGood` that returns `true` if its rating is greater than or equal to 7
 
-
+```
 ## Question 8
 
 ```swift
@@ -199,7 +259,37 @@ dog2.playFetch() //prints "Ruff!"
 dog2.hungry //returns true
 dog2.mood //returns "playful"
 ```
+Answer:
+```
+class Dog {
 
+    var name: String
+    var breed: String
+    var mood: String
+    var hungry: Bool
+
+    init (name: String, breed: String, mood: String, hungry: Bool) {
+    
+        self.name = name
+        self.breed = breed
+        self.mood = mood
+        self.hungry = hungry
+    
+    }
+    
+    func playFetch(){
+        hungry = true
+        mood = "playful"
+        print("Ruff!!!!")
+    }
+}
+
+let dog1 = Dog(name: "dog", breed: "unknown", mood: "calm", hungry: false)
+
+
+dog1.playFetch()
+dog1.mood
+```
 c. Add an instance method called `feed()`. If the dog is hungry, it should set `hungry` to `false` and print "Woof!" If the dog is not hungry, it should print "The dog doesn't look hungry"
 
 ```swift
